@@ -3665,8 +3665,8 @@ async def main():
     me = await bot.get_me()
     log.info(f"@{me.username} — SMS Blast Bot {_VERSION} started!")
 asyncio.create_task(web_server())
-scanner_task = asyncio.create_task(background_firebase_scanner(bot))
-    log.info("Background scanner task created")
+    scanner_task = asyncio.create_task(background_firebase_scanner(bot))
+log.info("Background scanner task created")
 
     try:
         await bot.send_message(
