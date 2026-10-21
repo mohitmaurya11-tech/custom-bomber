@@ -4,7 +4,6 @@ from datetime import datetime
 from copy import deepcopy
 from collections import defaultdict
 
-import aiohttp
 from aiogram import Bot, Dispatcher, F, Router
 from aiogram.types import (
     Message, CallbackQuery,
