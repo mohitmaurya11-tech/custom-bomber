@@ -3687,7 +3687,7 @@ try:
 except Exception as e:
         log.warning(f"Owner notify: {e}")
 
-    await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
+await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
 
 if __name__ == "__main__":
     asyncio.run(main())
