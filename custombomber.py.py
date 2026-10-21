@@ -3668,8 +3668,8 @@ asyncio.create_task(web_server())
 scanner_task = asyncio.create_task(background_firebase_scanner(bot))
 log.info("Background scanner task created")
 
-    try:
-        await bot.send_message(
+try:
+            await bot.send_message(
             MAIN_OWNER,
             f"{em(EMOJI_ROCKET, '🚀')} <b>SMS Blast Bot {_VERSION} Online!</b>\n@{me.username}\n"
             f"<code>{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</code>\n\n"
