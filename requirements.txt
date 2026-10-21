@@ -1,1 +1,3 @@
 aiogram
+gunicorn
+aiohttp
