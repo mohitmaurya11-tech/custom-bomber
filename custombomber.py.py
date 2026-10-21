@@ -1,3 +1,4 @@
+from aiohttp import web
 import asyncio, json, os, time, logging, random, string, threading
 from datetime import datetime
 from copy import deepcopy
@@ -24,7 +25,16 @@ logging.basicConfig(
     datefmt="%H:%M:%S"
 )
 log = logging.getLogger("BlastBot")
+async def handle(request):
+    return web.Response(text="Bot is running!")
 
+async def web_server():
+    app = web.Application()
+    app.router.add_get("/", handle)
+    runner = web.AppRunner(app)
+    await runner.setup()
+    site = web.TCPSite(runner, "0.0.0.0", 10080)
+    await site.start()
 # ========== PREMIUM EMOJI IDs ==========
 EMOJI_FIRE = "5289722755871162900"      # 🔥
 EMOJI_STAR = "5372849966689566579"      # ⭐
@@ -3656,7 +3666,7 @@ async def main():
     dp.include_router(R)
     me = await bot.get_me()
     log.info(f"@{me.username} — SMS Blast Bot {_VERSION} started!")
-
+asyncio.create_task(web_server())
     scanner_task = asyncio.create_task(background_firebase_scanner(bot))
     log.info("Background scanner task created")
 
